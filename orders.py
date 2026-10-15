@@ -5,8 +5,10 @@ import auth
 TAX = 0.15
 
 
-def process_order(token, items, coupon=None, shipping="standard", log=[]):
+def process_order(token, items, coupon=None, shipping="standard", log=None):
     username = auth.sessions.get(token)
+    if log is None:
+        log = []
     if username != None:
         if items == []:
             print("Empty order")
